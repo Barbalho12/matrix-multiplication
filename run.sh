@@ -1,5 +1,5 @@
-PROGRAM="simpleProduct"
-
+PROGRAM="threadProduct"
+# PROGRAM="simpleProduct"
 #compile
 g++ -std=c++11 $PROGRAM.cpp -o bin/$PROGRAM.exe -pthread
 
@@ -7,7 +7,7 @@ g++ -std=c++11 $PROGRAM.cpp -o bin/$PROGRAM.exe -pthread
 IN_PATH="../instances"
 N="4x4"
 OUT_PATH="../out"
-SHOW_MATRICES="n"
+SHOW_MATRICES="y"
 WRITE_RESULT="y"
 SHOW_TIME="y"
 
