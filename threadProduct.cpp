@@ -68,7 +68,7 @@ void writeMatrix(string file, matrix &X){
 }
 
 
-void product(vetor x, matrix Y, vetor z) {
+void product_simple(vetor &x, matrix &Y, vetor &z) {
 	int m = x.size();
 	int n = Y[0].size();
 
@@ -88,9 +88,7 @@ matrix product(matrix &X, matrix &Y) {
 	std::thread threads[m];
 
 	for(int i = 0; i < m; i++){
-		for(int j = 0; j < m; j++){
-			threads[i] = std::thread(product, X[i], Y, Z[i]);
-		}
+		threads[i] = std::thread(product_simple, ref(X[i]), ref(Y), ref(Z[i]));
 	}
 	for(int i = 0; i < m; i++){
 		threads[i].join();

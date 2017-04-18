@@ -7,7 +7,7 @@ g++ -std=c++11 $PROGRAM.cpp -o bin/$PROGRAM.exe -pthread
 IN_PATH="../instances"
 N="4x4"
 OUT_PATH="../out"
-SHOW_MATRICES="y"
+SHOW_MATRICES="n"
 WRITE_RESULT="y"
 SHOW_TIME="y"
 
