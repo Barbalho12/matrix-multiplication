@@ -114,9 +114,12 @@ void lerArgs(int argc, const char * argv[]){
 
 void showTime(double timeRead, double timeProduct, double timeShow){
 	std::cout << std::fixed;
-	cout << std::setprecision(4) << timeRead*1000 << '\t';
-	cout << std::setprecision(4) << timeProduct*1000 << '\t';
-	cout << std::setprecision(4) << timeShow*1000 << "\t\n";
+	cout << std::setprecision(4) << timeRead*1000;
+	cout << '\t';
+	cout << std::setprecision(4) << timeProduct*1000;
+	cout << '\t';
+	cout << std::setprecision(4) << timeShow*1000;
+	cout << endl;
 }
 
 void showMatrices(matrix &A, matrix &B, matrix &P){
