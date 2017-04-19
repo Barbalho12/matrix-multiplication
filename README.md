@@ -74,7 +74,7 @@ Nos gráficos abaixo também se pode analisar o tempo de multiplicação de uma 
 
 ![f1](analyser/comportamento_1024-2048.png?raw=true "Análise 6")
 
-Por fim, Avaliando o speedup da execução da forma sequêncial em relação a concorrente, percebe-se com mais clareza, a partir da tabela a seguir, em que ponto a abordagem concorrente passa a ter mais vantagem, e executar até 5x mais rápido do que a sequêncial. 
+Por fim, Avaliando o speedup da execução da forma sequencial em relação a concorrente, percebe-se com mais clareza, a partir da tabela a seguir, em que ponto a abordagem concorrente passa a ter mais vantagem, e executar até 5x mais rápido do que a sequencial.
 
 ![f1](analyser/speedup.png?raw=true "Análise 7")
 
