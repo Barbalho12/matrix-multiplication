@@ -2,7 +2,7 @@
 Análise da implementação de multiplicação de matrizes em C++ sem o uso de threads e fazendo uso de threads.
 
 ## Introdução
-
+Multiplicação de matrizes é uma operação de grande custo computacional e possui uma complexidade O(n³) (apesar de algumas abordagens reduzir essa complexidade). No entanto a multiplicação de matrizes pode ser modularizada, visto que para determinar o primeiro elemento da matriz resultante só é necessário acessar a primeira linha e a primeira coluna das matrizes de entrada, respectivamente. Com isso, é possível fragmentar o problema em N subproblemas, considerando as matrizes de entrada MxN e NxM. Por meio disso, esse trabalho tem como objetivo apresentar como se dá o comportamento em tempo da multiplicação de matrizes, implementado de forma sequencial e utilizando threads, dividindo o problema em subproblemas concorrentes de forma gradativa (variando o número de threads).
 
 ## Execução
 Para executar as análises é necessário iniciar o script "run.sh". Em uma execução simples:
