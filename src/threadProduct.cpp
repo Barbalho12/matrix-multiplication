@@ -22,6 +22,8 @@ bool showTimeFlag = true;
 bool writeMatrixFlag = true;
 bool showMatricesFlag = false;
 
+int threads_number = 1;
+
 void showMatriz(string label, matrix &X){
 	cout << "___________" << label<< "___________" << endl;
 	for (int i = 0; i < X.size(); ++i){
@@ -67,32 +69,36 @@ void writeMatrix(string file, matrix &X){
 	} 
 }
 
-
-void product_simple(vetor &x, matrix &Y, vetor &z) {
-	int m = x.size();
-	int n = Y[0].size();
-
-	for(int i = 0; i < n; i++){
-		for(int k = 0; k < n; k++){
-			z[i] += x[k] * Y[k][i];
+void partial_product(matrix &X, matrix &Y, matrix &Z, int i, int n) {
+	int size = Y[0].size();
+	for(; i < n; i++){
+		for(int j = 0; j < size; j++){
+			for(int k = 0; k < size; k++){
+				Z[i][j] += X[i][k] * Y[k][j];
+			}
 		}
 	}
 }
 
 
-matrix product(matrix &X, matrix &Y) {
+matrix product(matrix &X, matrix &Y, int threads_number) {
+	
 	int m = X.size();
 	int n = Y[0].size();
+
 	matrix Z(m, vetor(n, 0));
 
-	std::thread threads[m];
+	std::thread threads[threads_number];
 
-	for(int i = 0; i < m; i++){
-		threads[i] = std::thread(product_simple, ref(X[i]), ref(Y), ref(Z[i]));
+	int factor = m/threads_number;
+
+	for(int i = 0; i < m; i+=factor){
+		threads[i/factor] = std::thread(partial_product, ref(X), ref(Y), ref(Z), i, i+factor);
 	}
-	for(int i = 0; i < m; i++){
+	for(int i = 0; i < threads_number; i++){
 		threads[i].join();
 	}
+
 	return Z;
 }
 
@@ -122,6 +128,8 @@ void lerArgs(int argc, const char * argv[]){
 		}else{
 			showTimeFlag = false;
 		}
+	}if(argc > 7){
+		threads_number = atoi(argv[7]);
 	}
 	
 }
@@ -159,7 +167,7 @@ int main(int argc, const char * argv[]) {
    
    
     t1 = std::chrono::high_resolution_clock::now();
-    P = product(A, B);
+    P = product(A, B, threads_number);
     t2 = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> timeProduct = t2 - t1;
     

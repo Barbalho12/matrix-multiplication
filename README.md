@@ -1,9 +1,11 @@
 # Matrix Multiplication
 Analysis of the implementation of matrix multiplication with and without threads
 
+![f1](analyser/resultado_nt.png?raw=true "Análise 1")
 
 ## Without threads
-![f1](analyser/resultado.png?raw=true "Análise 1")
+
 
 
 ## with threads
+<!-- ![f1](analyser/resultado_nt.png?raw=true "Análise 1") -->
